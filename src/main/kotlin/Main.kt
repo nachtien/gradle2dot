@@ -19,13 +19,13 @@ fun main(args: Array<String>) {
 
 fun OutputStreamWriter.writeDependencies(dependencies: List<Dependency>) {
     use { writer ->
-        writer.appendln("digraph G {")
+        writer.appendLine("digraph G {")
         dependencies
-            .filter { it.variant?.toLowerCase() == "main" || it.variant.isNullOrBlank() }
+            .filter { it.variant?.lowercase() == "main" || it.variant.isNullOrBlank() }
             .forEach { dependency ->
-                writer.appendln("    \"${dependency.parent}\" -> \"${dependency.name}\"")
+                writer.appendLine("    \"${dependency.parent}\" -> \"${dependency.name}\"")
             }
-        writer.appendln("}")
+        writer.appendLine("}")
     }
 }
 
